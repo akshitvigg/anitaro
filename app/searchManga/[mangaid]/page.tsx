@@ -36,7 +36,7 @@ const GetsearchManga = ({ params }: any) => {
         </div>
       ) : (
         <div className=" flex justify-center">
-          <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]  bg-black mt-32 mb-16  sm:mt-12  grid gap-x-5 gap-y-4 sm:grid-cols-3">
+          <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-32 mb-16  sm:mt-12  grid gap-x-5 gap-y-4 sm:grid-cols-3">
             {mangaData.map((manga) => (
               <div className="   col-span-1 " key={manga.id}>
                 <Link href={`/mangainfo/${manga.id}`}>
