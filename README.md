@@ -50,6 +50,10 @@ Open a Pull Request
 
 Made with ❤️ for anime and manga fans
 
+## License
+
+Distributed under the MIT License . See [LICENSE](https://github.com/akshitvigg/anitaro/blob/master/LICENSE) for more information.
+
 ## Authors
 
 * **Akshit Vig** - [Akshit Vig](https://github.com/akshitvigg)
