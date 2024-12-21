@@ -1,18 +1,25 @@
 "use client";
 import { MangaNavbar } from "@/components/mangaNavbar";
 import { MANGA_URL } from "@/config";
-import { Image, Spinner } from "@nextui-org/react";
+import { Button, Image, Spinner } from "@nextui-org/react";
 import axios from "axios";
 
 import Link from "next/link";
 import { useEffect, useState, use } from "react";
+
+interface MangaData {
+  id: string;
+  title: string;
+  image: string;
+  status: string;
+}
 
 const GetsearchManga = ({ params }: any) => {
   const searchquery: any = use(params);
   const mangaid = searchquery.mangaid;
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [mangaData, setmangadata] = useState<any[]>([]);
+  const [mangaData, setmangadata] = useState<MangaData[]>([]);
   const getMangadata = async () => {
     const response = await axios.get<{ results: any[] }>(
       `${MANGA_URL}/mangadex/${mangaid}`
@@ -52,9 +59,21 @@ const GetsearchManga = ({ params }: any) => {
                       src={getProxyImageUrl(manga.image)}
                     />
 
-                    {manga.title.length > 60
-                      ? manga.title.slice(0, 17) + "..."
-                      : manga.title}
+                    <div className=" flex justify-between">
+                      <div className=" mb-4 mt-1">
+                        {manga.title.length > 60
+                          ? manga.title.slice(0, 17) + "..."
+                          : manga.title}
+                      </div>
+                      <div>
+                        <Button
+                          className=" bg-black border-[#3f3f46] border"
+                          size="sm"
+                        >
+                          {manga.status}
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </Link>
               </div>
