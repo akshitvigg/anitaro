@@ -40,8 +40,8 @@ const Animedata = ({ params }: any) => {
           <Spinner size="lg" />
         </div>
       ) : (
-        <div className=" flex bg-black justify-center">
-          <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]  bg-black mt-32 mb-16  sm:mt-12  grid gap-x-5 gap-y-4 sm:grid-cols-3">
+        <div className=" flex justify-center">
+          <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]  mt-32 mb-16  sm:mt-12  grid gap-x-5 gap-y-4 sm:grid-cols-3">
             {aniData.map((anime) => (
               <div className="   col-span-1 " key={anime.id}>
                 <Link href={`/animeinfo/${anime.id}`}>
