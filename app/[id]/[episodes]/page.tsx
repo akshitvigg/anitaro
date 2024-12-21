@@ -49,7 +49,7 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
       <div>
         <NavbarContainer />
         <div className="flex justify-center mt-52">
-          <Spinner size="lg" />
+          <Spinner size="lg" className="mb-72" />
         </div>
       </div>
     );
