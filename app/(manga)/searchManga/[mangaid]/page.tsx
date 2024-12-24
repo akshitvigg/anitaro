@@ -57,9 +57,9 @@ const GetsearchManga = ({ params }: any) => {
                       src={getProxyImageUrl(manga.image)}
                     />
 
-                    <div className=" flex justify-between">
+                    <div className=" flex justify-between ">
                       <div className=" mb-4 mt-1">
-                        {manga.title.length > 60
+                        {manga.title.length > 40
                           ? manga.title.slice(0, 17) + "..."
                           : manga.title}
                       </div>
