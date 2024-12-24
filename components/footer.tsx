@@ -2,11 +2,7 @@ import { Navbar, NavbarBrand } from "@nextui-org/react";
 import {
   IconBrandGithub,
   IconBrandX,
-  IconCopy,
   IconCopyright,
-  IconCopyrightFilled,
-  IconCopyrightOff,
-  IconNoCopyright,
 } from "@tabler/icons-react";
 
 import Link from "next/link";
