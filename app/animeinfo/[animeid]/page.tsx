@@ -30,7 +30,7 @@ export default function AnimeInfo({ params }: any) {
 
   if (!anidata) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-black">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="relative">
           <Spinner size="lg" className="w-20 ml-9 h-20" />
           <div className="mt-4 text-gray-400 text-lg animate-pulse">
