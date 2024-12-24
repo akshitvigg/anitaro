@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "^14.2.15",
     "@nextui-org/react": "^2.6.8",
+    "@tabler/icons-react": "^3.26.0",
     "@types/axios": "^0.9.36",
     "@vercel/analytics": "^1.4.1",
     "axios": "^1.7.9",
