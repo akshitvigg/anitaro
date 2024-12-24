@@ -1,10 +1,13 @@
-import { Copy } from "@/logos/copy";
-
-import { Gitlogo } from "@/logos/gitlogo";
-
-import { Xlogo } from "@/logos/xlogo";
-
 import { Navbar, NavbarBrand } from "@nextui-org/react";
+import {
+  IconBrandGithub,
+  IconBrandX,
+  IconCopy,
+  IconCopyright,
+  IconCopyrightFilled,
+  IconCopyrightOff,
+  IconNoCopyright,
+} from "@tabler/icons-react";
 
 import Link from "next/link";
 
@@ -12,8 +15,8 @@ export const Footer = () => {
   return (
     <Navbar isBordered className="border-t mt-12   font-mono py-4">
       <NavbarBrand className="flex justify-between items-center ">
-        <div className="flex items-center space-x-4">
-          <Copy />
+        <div className="flex items-center space-x-2">
+          <IconCopyright size={21} className=" " />
 
           <Link
             href="/"
@@ -39,12 +42,12 @@ export const Footer = () => {
 
         <div className="flex items-center space-x-4 text-white">
           <a target="_blank" href="https://github.com/akshitvigg/anitaro">
-            <Gitlogo />
+            <IconBrandGithub className=" transition-all duration-200 hover:scale-110" />
           </a>
 
-          <div className=" -translate-y-1">
+          <div>
             <a target="_blank" href="https://x.com/AkshitVig4">
-              <Xlogo />
+              <IconBrandX className="transition-all duration-200 hover:scale-110" />
             </a>
           </div>
         </div>

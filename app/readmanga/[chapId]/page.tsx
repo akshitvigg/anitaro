@@ -135,7 +135,7 @@ const ReadManga = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="min-h-screen flex items-center justify-center ">
         <div className="flex flex-col items-center space-y-4">
           <Loader2 className="w-12 h-12 animate-spin text-blue-600" />
           <p className="text-lg text-gray-300 animate-pulse">
@@ -162,7 +162,7 @@ const ReadManga = () => {
   return (
     <div>
       <MangaNavbar />
-      <div className="min-h-screen bg-black py-8 px-4">
+      <div className="min-h-screen  py-8 px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl font-bold text-gray-100 text-center mb-8">
             Chapter {chapid}
