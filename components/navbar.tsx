@@ -12,14 +12,31 @@ import {
   Button,
 } from "@nextui-org/react";
 import { Search, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { IconSun } from "@tabler/icons-react";
+
+const useDarkMode = () => {
+  const [isDarkMode, setisDarkMode] = useState(true);
+
+  useEffect(() => {
+    const savedPreference = localStorage.getItem("theme");
+
+    if (savedPreference == "light") {
+      document.documentElement.classList.remove("dark");
+      setisDarkMode(false);
+    } else {
+      document.documentElement.classList.az;
+    }
+  }, []);
+};
 
 export const NavbarContainer = () => {
   const [inputVal, setInputval] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+
   const router = useRouter();
 
   const handleSearch = () => {
@@ -96,7 +113,8 @@ export const NavbarContainer = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="flex gap-2">
+        <NavbarItem className="flex items-center gap-2">
+          <IconSun />
           <div className="hidden font-mono sm:block">
             <Input
               classNames={{
