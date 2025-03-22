@@ -28,7 +28,7 @@ const EpisodeContainer = ({ anidata }: any) => {
         >
           <div className="relative w-full aspect-video overflow-hidden">
             <img
-              src={getProxyImageUrl(anidata.image)}
+              src={getProxyImageUrl(episode.image)}
               alt={`Episode ${episode.number}`}
               className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-300"
             />
