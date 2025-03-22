@@ -11,7 +11,7 @@ interface Anime {
   id: string;
   title: string;
   image: string;
-  episodeNumber: number;
+  rating: number;
 }
 
 export const HomePageAnimes = () => {
@@ -117,14 +117,20 @@ export const HomePageAnimes = () => {
                           alt="anime images"
                           src={getProxyImageUrl(anime.image)}
                         />
-                        <div className="mt-2">
-                          {anime.title.length > 60
-                            ? anime.title.slice(0, 17) + "..."
-                            : anime.title}
-                        </div>
-                        <div className=" text-gray-400">
-                          {activeButton === "/popular" ? null : "Episode "}
-                          {anime.episodeNumber}
+                        <div className=" flex justify-between">
+                          <div className=" mb-4 mt-1">
+                            {anime.title.length > 60
+                              ? anime.title.slice(0, 17) + "..."
+                              : anime.title}
+                          </div>
+                          <div>
+                            <Button
+                              className=" bg-black border-[#3f3f46] border"
+                              size="sm"
+                            >
+                              {anime.rating}
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </Link>
