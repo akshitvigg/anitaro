@@ -42,6 +42,10 @@ export const HomePageAnimes = () => {
     setLoading(false);
   }, []);
 
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
+
   return (
     <div className=" min-h-screen mt-32  -translate-y-14 bg-[#0a0a0a]">
       {loading ? (
@@ -111,7 +115,7 @@ export const HomePageAnimes = () => {
                           height={240}
                           radius="sm"
                           alt="anime images"
-                          src={anime.image}
+                          src={getProxyImageUrl(anime.image)}
                         />
                         <div className="mt-2">
                           {anime.title.length > 60
