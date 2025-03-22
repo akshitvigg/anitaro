@@ -26,6 +26,10 @@ export default function AnimeInfo({ params }: any) {
     }
   }, [animeid]);
 
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
+
   if (!anidata) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -51,7 +55,7 @@ export default function AnimeInfo({ params }: any) {
       <div className="bg-gradient-to-b font-mono from-black to-neutral-900 min-h-screen">
         <div
           className="absolute top-0 left-0 w-full h-[400px] bg-cover bg-center opacity-10 blur-sm"
-          style={{ backgroundImage: `url(${anidata.image})` }}
+          style={{ backgroundImage: `url(${getProxyImageUrl(anidata.image)})` }}
         />
 
         <div className="relative z-10">
@@ -64,7 +68,7 @@ export default function AnimeInfo({ params }: any) {
                   <Image
                     className="object-cover rounded-lg shadow-2xl shadow-amber-500/10 
                            transition-transform duration-300 group-hover:scale-[1.02]"
-                    src={anidata.image}
+                    src={getProxyImageUrl(anidata.image)}
                     width={350}
                     height={500}
                     alt={anidata.title || "Anime cover"}
