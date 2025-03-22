@@ -31,6 +31,10 @@ const Animedata = ({ params }: any) => {
     getAnidata();
   }, [animename]);
 
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
+
   return (
     <div>
       {loading ? (
@@ -52,7 +56,7 @@ const Animedata = ({ params }: any) => {
                       width={400}
                       height={240}
                       radius="sm"
-                      src={anime.image}
+                      src={getProxyImageUrl(anime.image)}
                     />
 
                     {anime.title.length > 60
