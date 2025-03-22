@@ -8,6 +8,10 @@ const EpisodeContainer = ({ anidata }: any) => {
 
   const totalGroups = Math.ceil(episodes.length / 100);
 
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
+
   const renderEpisodes = () => {
     const startIndex = selectedGroup * 100;
     const endIndex = Math.min(startIndex + 100, episodes.length);
@@ -24,7 +28,7 @@ const EpisodeContainer = ({ anidata }: any) => {
         >
           <div className="relative w-full aspect-video overflow-hidden">
             <img
-              src={anidata.image}
+              src={getProxyImageUrl(anidata.image)}
               alt={`Episode ${episode.number}`}
               className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-300"
             />
