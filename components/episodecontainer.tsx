@@ -19,7 +19,8 @@ const EpisodeContainer = ({ anidata }: any) => {
     return episodes.slice(startIndex, endIndex).map((episode: any) => (
       <Link
         key={episode.number}
-        href={`/${anidata.id}/${episode.number.toString().replace(/\./g, "-")}`}
+        href={`/${episode.id}`}
+        // href={`/${episode.id}`}
         className="group"
       >
         <Card
@@ -28,7 +29,7 @@ const EpisodeContainer = ({ anidata }: any) => {
         >
           <div className="relative w-full aspect-video overflow-hidden">
             <img
-              src={getProxyImageUrl(episode.image)}
+              src={getProxyImageUrl(anidata.image)}
               alt={`Episode ${episode.number}`}
               className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-300"
             />
