@@ -11,7 +11,7 @@ interface Anime {
   id: string;
   title: string;
   image: string;
-  rating: number;
+  episodes: number;
 }
 
 export const HomePageAnimes = () => {
@@ -69,12 +69,12 @@ export const HomePageAnimes = () => {
 
             <Button
               className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
-                activeButton === "/popular"
+                activeButton === "/most-popular"
                   ? "bg-black text-white shadow-md"
                   : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
               }`}
               radius="sm"
-              onPress={() => getTrendinganime("/popular")}
+              onPress={() => getTrendinganime("/most-popular")}
             >
               Popular
             </Button>
@@ -117,20 +117,14 @@ export const HomePageAnimes = () => {
                           alt="anime images"
                           src={getProxyImageUrl(anime.image)}
                         />
-                        <div className=" flex justify-between">
-                          <div className=" mb-4 mt-1">
-                            {anime.title.length > 60
-                              ? anime.title.slice(0, 17) + "..."
-                              : anime.title}
-                          </div>
-                          <div>
-                            <Button
-                              className=" bg-black border-[#3f3f46] border"
-                              size="sm"
-                            >
-                              {anime.rating}
-                            </Button>
-                          </div>
+                        <div className="mt-2">
+                          {anime.title.length > 60
+                            ? anime.title.slice(0, 17) + "..."
+                            : anime.title}
+                        </div>
+                        <div className=" text-gray-400">
+                          {activeButton === "/popular" ? null : "Episode "}
+                          {anime.episodes}
                         </div>
                       </div>
                     </Link>
