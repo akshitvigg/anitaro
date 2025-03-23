@@ -6,7 +6,8 @@ import "video.js/dist/video-js.css";
 import videojs from "video.js";
 import { CONSUMET_URL } from "@/config";
 
-const M3U8_PROXY = "https://m3u8proxy-dsu3.onrender.com/m3u8-proxy?url=";
+const M3U8_PROXY =
+  "https://gogoanime-and-hianime-proxy-3.onrender.com/m3u8-proxy?url=";
 
 type StreamingService = {
   name: string;
@@ -150,7 +151,7 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
     const sourceUrl = currentData.sources[selectedServer]?.url;
     if (!sourceUrl) return;
 
-    const proxiedUrl = `${M3U8_PROXY}${encodeURIComponent(sourceUrl)}`;
+    const proxiedUrl = `${M3U8_PROXY}${sourceUrl}`;
 
     const subtitleTrack =
       selectedSubtitle !== null && currentData.subtitles
