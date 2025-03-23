@@ -13,7 +13,7 @@ export default function AnimeInfo({ params }: any) {
 
   const getAllaboutthatanime = async () => {
     try {
-      const response = await axios.get(`${CONSUMET_URL}/info/${animeid}`);
+      const response = await axios.get(`${CONSUMET_URL}/info?id=${animeid}`);
       setAnindata(response.data);
     } catch (error) {
       console.error("Failed to fetch anime data:", error);
