@@ -2,7 +2,7 @@ import VideoPlayer from "@/components/videoplayer";
 
 export default function Animetest() {
   const m3u8ProxyUrl =
-    "https://m3u8proxy-dsu3.onrender.com/m3u8-proxy?url=https://ed.netmagcdn.com:2228/hls-playback/8ff4583ec989bfd91ed9f86b8ac537b6d4b1e0c5a2956301e856a768b38c60ef436e9b9a3d39225dbe7870795370e0e2cebfdf632d801a57f4f1250689575a2f3d53d9b6aad3b08054f9ce3f2beb913d89ed984d6795702f90e60bf4b346bdcf5d61c41613871176de9c41a13df375318e827583e69b1a54ad98093d35711396beb181f5b1cb5086d8a78936fd1cbe94/master.m3u8";
+    "https://lightningspark77.pro/_v7/9c91e62b08efed2c227af0fd7162703c2d8ca95ecfe25bcda8cd02b8ca65c3bda9433b8f6439c28ef8ee52366062ce838407eb90be2cc46f8bbfee956c689a8ec476d6580918f4af9b7575a3fa38f2ed5501ecd242ce6aa5aa3678fc8b5d1f382185630706cf9c83962f4786b18b9392/master.m3u8";
 
   return (
     <div>
