@@ -1,13 +1,24 @@
-import VideoPlayer from "@/components/videoplayer";
+import M3U8Player from "@/components/videoplayer";
 
-export default function Animetest() {
-  const m3u8ProxyUrl =
-    "https://gogoanime-and-hianime-proxy-3.onrender.com/m3u8-proxy?url=https://eh.netmagcdn.com:2228/hls-playback/462f0ad7b60573e9fceb9391a56938ef1a2f5b224bf5ecc273c50df25aa3619f364e68a109158ef83abf922fbe6416e074fda870f63afcae80f54f92afb10fa517fe87278e7763a42f13cdcc4286c75f0c9c59fb206491f4356a118f02a0e3856a39bef1a39c7f0cda8de2f5a9bd424fea54d2b5c87ea3c0e367fafb248cfbbffb9e3f793526007ae2a4e84fa1f4bc25/master.m3u8";
-
+const Play = () => {
   return (
     <div>
-      <h1>Next.js Video.js M3U8 Player</h1>
-      <VideoPlayer m3u8Url={m3u8ProxyUrl} />
+      <M3U8Player
+        m3u8Url="https://cdn.dotstream.buzz/anime/eccbc87e4b5ce2fe28308fd9f2a7baf3/bec16b94c40f9ae5fecb59a446769a44/master.m3u8"
+        referer="https://megaplay.buzz/stream/s-2/steinsgate-3?ep=230/dub"
+        subtitles={[
+          {
+            url: "https://cdn.dotstream.buzz/anime/eccbc87e4b5ce2fe28308fd9f2a7baf3/bec16b94c40f9ae5fecb59a446769a44/subtitles/eng-0.vtt",
+            lang: "English",
+          },
+          {
+            url: "https://cdn.dotstream.buzz/anime/eccbc87e4b5ce2fe28308fd9f2a7baf3/bec16b94c40f9ae5fecb59a446769a44/subtitles/spa-1.vtt",
+            lang: "Spanish",
+          },
+        ]}
+      />
     </div>
   );
-}
+};
+
+export default Play;
