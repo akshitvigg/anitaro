@@ -1,4 +1,4 @@
-"use client"; // Ensure this runs only on the client side
+"use client";
 
 import { useEffect, useRef } from "react";
 import videojs from "video.js";
