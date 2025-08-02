@@ -4,7 +4,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { animeid: string } }
 ) {
-  const { animeid } = params;
+  const { animeid } = await params;
 
   if (!animeid) {
     return NextResponse.json(

@@ -4,7 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 import Link from "next/link";
-import { unique } from "next/dist/build/utils";
 
 interface Anime {
   id: string;
