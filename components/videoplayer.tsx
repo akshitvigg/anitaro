@@ -52,16 +52,24 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         className="video-js vjs-default-skin w-full h-auto rounded-lg"
         crossOrigin="anonymous"
       >
-        {subtitles.map((track, index) => (
-          <track
-            key={index}
-            src={track.url}
-            label={track.lang}
-            kind="subtitles"
-            srcLang={track.lang.slice(0, 2).toLowerCase()}
-            default={track.lang === "English"}
-          />
-        ))}
+        {subtitles.map((track, index) => {
+          const proxiedTrackUrl = `https://rust-proxy-m3u8.onrender.com/?url=${encodeURIComponent(
+            track.url
+          )}&headers=${encodeURIComponent(
+            JSON.stringify({ Referer: referer })
+          )}`;
+
+          return (
+            <track
+              key={index}
+              src={proxiedTrackUrl}
+              label={track.lang}
+              kind="subtitles"
+              srcLang={track.lang.slice(0, 2).toLowerCase()}
+              default={track.lang === "English"}
+            />
+          );
+        })}
       </video>
     </div>
   );
