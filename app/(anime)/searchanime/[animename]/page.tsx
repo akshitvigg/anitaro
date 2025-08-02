@@ -7,10 +7,10 @@ import { useEffect, useState, use } from "react";
 
 interface Anidata {
   id: string;
-  title: string;
-  image: string;
-  releaseDate: string;
-  subOrDub: string;
+  name: string;
+  poster: string;
+  // releaseDate: string;
+  // subOrDub: string;
 }
 
 const Animedata = ({ params }: any) => {
@@ -20,10 +20,9 @@ const Animedata = ({ params }: any) => {
 
   const [aniData, setanidata] = useState<Anidata[]>([]);
   const getAnidata = async () => {
-    const response = await axios.get<{ results: Anidata[] }>(
-      `${CONSUMET_URL}/${animename}`
-    );
-    setanidata(response.data.results);
+    const response = await axios.get(`/api/search?q=${animename}`);
+    //@ts-ignore
+    setanidata(response.data.data.animes);
     setLoading(false);
   };
 
@@ -56,12 +55,12 @@ const Animedata = ({ params }: any) => {
                       width={400}
                       height={240}
                       radius="sm"
-                      src={getProxyImageUrl(anime.image)}
+                      src={getProxyImageUrl(anime.poster)}
                     />
 
-                    {anime.title.length > 60
-                      ? anime.title.slice(0, 17) + "..."
-                      : anime.title}
+                    {anime.name.length > 60
+                      ? anime.name.slice(0, 17) + "..."
+                      : anime.name}
                   </div>
                 </Link>
               </div>
