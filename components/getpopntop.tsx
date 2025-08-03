@@ -164,7 +164,7 @@ export const HomePageAnimes = () => {
                         </div>
                         <div className="text-gray-400">
                           {anime.episodes?.sub
-                            ? `Episode ${anime.episodes.sub}`
+                            ? `Episodes ${anime.episodes.sub}`
                             : ""}
                         </div>
                       </div>
