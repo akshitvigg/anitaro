@@ -9,6 +9,8 @@ export default function AnimeInfo({ params }: any) {
   const resolvedParams: any = use(params);
   const animeid = resolvedParams.animeid;
   const [anidata, setAnindata] = useState<any>(null);
+  const [episodes, setEpisodes] = useState<any>(null);
+  const [loadingEpisodes, setLoadingEpisodes] = useState<boolean>(false);
 
   const getAllaboutthatanime = async () => {
     try {
@@ -42,8 +44,24 @@ export default function AnimeInfo({ params }: any) {
       };
 
       setAnindata(restructuredData);
+
+      // Fetch episodes after anime info is loaded
+      await getEpisodes();
     } catch (error) {
       console.error("Failed to fetch anime data:", error);
+    }
+  };
+
+  const getEpisodes = async () => {
+    try {
+      setLoadingEpisodes(true);
+      const response = await axios.get(`/api/anime/${animeid}/episodes`);
+      //@ts-ignore
+      setEpisodes(response.data.data);
+    } catch (error) {
+      console.error("Failed to fetch episodes:", error);
+    } finally {
+      setLoadingEpisodes(false);
     }
   };
 
@@ -250,7 +268,13 @@ export default function AnimeInfo({ params }: any) {
               </div>
             </div>
           </div>
-          <div>{/* <EpisodeContainer anidata={anidata} /> */}</div>
+          <div>
+            <EpisodeContainer
+              anidata={anidata}
+              episodes={episodes}
+              loadingEpisodes={loadingEpisodes}
+            />
+          </div>
         </div>
       </div>
     </div>
