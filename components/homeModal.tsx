@@ -7,7 +7,7 @@ import { NavbarContainer } from "./navbar";
 
 const images = [
   {
-    src: "/aot.jpg",
+    src: "/aot2.jpg",
     alt: "Attack on Titan",
     link: "/animeinfo/attack-on-titan-112",
     year: 2013,
