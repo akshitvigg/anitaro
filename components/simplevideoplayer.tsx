@@ -22,7 +22,7 @@ export const SimpleVideoPlayer: React.FC<SimpleVideoPlayerProps> = ({
   useEffect(() => {
     if (!playerRef.current && videoRef.current) {
       console.log("Initializing simple video player with URL:", proxyUrl);
-      
+
       playerRef.current = videojs(videoRef.current, {
         controls: true,
         autoplay: false,
@@ -43,26 +43,25 @@ export const SimpleVideoPlayer: React.FC<SimpleVideoPlayerProps> = ({
         ],
       });
 
-      // Add error handling
-      playerRef.current.on('error', (error: any) => {
-        console.error('Video.js error:', error);
-        console.error('Error details:', playerRef.current.error());
+      playerRef.current.on("error", (error: any) => {
+        console.error("Video.js error:", error);
+        console.error("Error details:", playerRef.current.error());
       });
 
-      playerRef.current.on('loadedmetadata', () => {
-        console.log('Video metadata loaded successfully');
+      playerRef.current.on("loadedmetadata", () => {
+        console.log("Video metadata loaded successfully");
       });
 
-      playerRef.current.on('canplay', () => {
-        console.log('Video can start playing');
+      playerRef.current.on("canplay", () => {
+        console.log("Video can start playing");
       });
 
-      playerRef.current.on('playing', () => {
-        console.log('Video is now playing');
+      playerRef.current.on("playing", () => {
+        console.log("Video is now playing");
       });
 
-      playerRef.current.on('waiting', () => {
-        console.log('Video is waiting for data');
+      playerRef.current.on("waiting", () => {
+        console.log("Video is waiting for data");
       });
     }
 
@@ -85,4 +84,4 @@ export const SimpleVideoPlayer: React.FC<SimpleVideoPlayerProps> = ({
   );
 };
 
-export default SimpleVideoPlayer; 
+export default SimpleVideoPlayer;
