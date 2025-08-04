@@ -54,7 +54,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         fullMessage.includes("subtitle") ||
         fullMessage.includes("cue")
       ) {
-        return; // Ignore VTT parsing errors
+        return;
       }
       originalConsoleError.apply(console, args);
     };
@@ -71,7 +71,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         fullMessage.includes("subtitle") ||
         fullMessage.includes("cue")
       ) {
-        return; // Ignore VTT and DOM warnings
+        return;
       }
       originalConsoleWarn.apply(console, args);
     };
@@ -82,17 +82,14 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
     };
   }, []);
 
-  // Wait for component to mount
   useEffect(() => {
     setIsMounted(true);
     return () => setIsMounted(false);
   }, []);
 
-  // Add keyboard shortcuts for 10-second skip
   const handleKeyPress = (e: KeyboardEvent) => {
     if (!playerRef.current) return;
 
-    // Prevent default if focused on video
     if (
       e.target === videoRef.current ||
       document.activeElement === videoRef.current
@@ -120,13 +117,11 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
     }
   };
 
-  // Initialize video player only after component is mounted
   useEffect(() => {
     if (!isMounted || !videoRef.current || playerRef.current) {
       return;
     }
 
-    // Double-check the element is in the DOM
     if (!document.contains(videoRef.current)) {
       console.log("Video element not in DOM yet, waiting...");
       return;
@@ -141,7 +136,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         fluid: true,
         preload: "auto",
         responsive: true,
-        playbackRates: [0.5, 1, 1.25, 1.5, 2], // Add playback speed options
+        playbackRates: [0.5, 1, 1.25, 1.5, 2],
         sources: [
           {
             src: proxyUrl,
@@ -150,7 +145,6 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         ],
         html5: {
           vhs: {
-            // HLS.js options to handle subtitle errors gracefully
             enableLowInitialPlaylist: true,
             smoothQualityChange: true,
             overrideNative: true,
@@ -158,31 +152,26 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         },
       });
 
-      // Add event listeners
       document.addEventListener("keydown", handleKeyPress);
 
-      // Handle player ready event
       playerRef.current.ready(() => {
         console.log("Video.js player ready - stream should start playing");
       });
 
-      // Handle errors gracefully
       playerRef.current.on("error", (error: any) => {
         const err = playerRef.current.error();
         if (err) {
           console.error("Video playback error:", err.message || err);
-          // Don't show subtitle parsing errors to user
+
           if (
             !err.message?.includes("subtitle") &&
             !err.message?.includes("VTT")
           ) {
-            // Only log serious playback errors
             console.error("Serious playback error:", err);
           }
         }
       });
 
-      // Handle successful loading
       playerRef.current.on("loadstart", () => {
         console.log("Video loading started");
       });
@@ -198,17 +187,14 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
       if (playerRef.current) {
         try {
           playerRef.current.dispose();
-        } catch (error) {
-          // Ignore disposal errors
-        }
+        } catch (error) {}
         playerRef.current = null;
       }
-      // Remove keyboard event listener
+
       document.removeEventListener("keydown", handleKeyPress);
     };
   }, [isMounted, proxyUrl]);
 
-  // Update source when URL changes
   useEffect(() => {
     if (playerRef.current && proxyUrl) {
       try {
@@ -242,7 +228,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
           className="video-js vjs-default-skin w-full h-full"
           crossOrigin="anonymous"
           playsInline
-          tabIndex={0} // Make video focusable for keyboard events
+          tabIndex={0}
         >
           {validSubtitles.map((track, index) => {
             const proxiedTrackUrl = `https://rust-proxy-m3u8.onrender.com/?url=${encodeURIComponent(
@@ -265,7 +251,6 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
         </video>
       </div>
 
-      {/* Keyboard shortcut hint - shows on hover */}
       <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
         ← → 10s | Space Play/Pause
       </div>
