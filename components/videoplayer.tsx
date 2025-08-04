@@ -28,16 +28,14 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
     m3u8Url
   )}&headers=${encodeURIComponent(JSON.stringify({ Referer: referer }))}`;
 
-  // Filter out problematic subtitle tracks
   const validSubtitles = subtitles.filter(
     (track) =>
-      track.lang !== "thumbnails" && // Remove thumbnail tracks that cause parsing errors
-      track.url.includes(".vtt") && // Only include VTT files
-      track.lang && // Must have a language
-      track.url // Must have a URL
+      track.lang !== "thumbnails" &&
+      track.url.includes(".vtt") &&
+      track.lang &&
+      track.url
   );
 
-  // Suppress Video.js subtitle parsing errors
   useEffect(() => {
     const originalConsoleError = console.error;
     const originalConsoleWarn = console.warn;
