@@ -14,25 +14,22 @@ export default function AnimeInfo({ params }: any) {
 
   const getAllaboutthatanime = async () => {
     try {
-      // Use your local API route instead of direct external API call
       const response = await axios.get(`/api/anime/${animeid}`);
 
-      // Extract and restructure the data to match your existing component structure
       //@ts-ignore
       const apiData = response.data.data;
       const animeInfo = apiData.anime.info;
       const moreInfo = apiData.anime.moreInfo;
 
-      // Map the new API structure to your existing structure
       const restructuredData = {
         title: animeInfo.name,
         image: animeInfo.poster,
         description: animeInfo.description,
-        genres: moreInfo.genres, // This is already an array
+        genres: moreInfo.genres,
         rating: animeInfo.stats.rating,
         status: moreInfo.status,
         releaseDate: moreInfo.aired,
-        // Additional data you might want to use
+
         type: animeInfo.stats.type,
         duration: animeInfo.stats.duration,
         episodes: animeInfo.stats.episodes,
@@ -45,7 +42,6 @@ export default function AnimeInfo({ params }: any) {
 
       setAnindata(restructuredData);
 
-      // Fetch episodes after anime info is loaded
       await getEpisodes();
     } catch (error) {
       console.error("Failed to fetch anime data:", error);
@@ -88,7 +84,6 @@ export default function AnimeInfo({ params }: any) {
     );
   }
 
-  // Since genres is already an array from the new API, we don't need the string processing
   const genres = Array.isArray(anidata.genres) ? anidata.genres : [];
 
   return (
@@ -129,7 +124,6 @@ export default function AnimeInfo({ params }: any) {
                   {anidata.title}
                 </h1>
 
-                {/* Japanese title if available */}
                 {anidata.japanese && (
                   <h2 className="text-xl text-gray-400 font-medium">
                     {anidata.japanese}
@@ -161,7 +155,6 @@ export default function AnimeInfo({ params }: any) {
                   </div>
                 </div>
 
-                {/* Updated info grid with new fields */}
                 <div
                   className="grid grid-cols-2 md:grid-cols-3 gap-4 bg-black backdrop-blur-sm 
                              rounded-lg p-4 mt-6 border border-neutral-800"
@@ -239,7 +232,6 @@ export default function AnimeInfo({ params }: any) {
                   )}
                 </div>
 
-                {/* Season selector if multiple seasons available */}
                 {anidata.seasons && anidata.seasons.length > 1 && (
                   <div className="space-y-4">
                     <h2 className="text-lg font-semibold text-white">
