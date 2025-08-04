@@ -26,7 +26,6 @@ const EpisodeContainer = ({
     return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
   };
 
-  // Show loading spinner while episodes are being fetched
   if (loadingEpisodes) {
     return (
       <div className="w-full h-[600px] flex justify-center items-center">
@@ -38,7 +37,6 @@ const EpisodeContainer = ({
     );
   }
 
-  // Show message if no episodes are available
   if (!episodes || !episodes.episodes || episodes.episodes.length === 0) {
     return (
       <div className="w-full h-[600px] flex justify-center items-center">
