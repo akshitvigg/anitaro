@@ -45,7 +45,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
     console.error = (...args) => {
       const message = args[0]?.toString?.() || "";
       const fullMessage = args.join(" ");
-      
+
       if (
         message.includes("ParsingError: Malformed timestamp") ||
         message.includes('VIDEOJS: "ERROR:"') ||
@@ -64,7 +64,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
     console.warn = (...args) => {
       const message = args[0]?.toString?.() || "";
       const fullMessage = args.join(" ");
-      
+
       if (
         message.includes("The element supplied is not included in the DOM") ||
         message.includes("VTT cue") ||
@@ -108,9 +108,7 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
           break;
         case "ArrowRight":
           e.preventDefault();
-          playerRef.current.currentTime(
-            playerRef.current.currentTime() + 10
-          );
+          playerRef.current.currentTime(playerRef.current.currentTime() + 10);
           break;
         case " ":
           e.preventDefault();
@@ -246,7 +244,6 @@ export const M3U8Player: React.FC<M3U8PlayerProps> = ({
           className="video-js vjs-default-skin w-full h-full"
           crossOrigin="anonymous"
           playsInline
-         
           tabIndex={0} // Make video focusable for keyboard events
         >
           {validSubtitles.map((track, index) => {
