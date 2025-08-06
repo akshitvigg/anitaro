@@ -5,7 +5,7 @@ const Play = () => {
     <div>
       <M3U8Player
         m3u8Url="https://cdn.dotstream.buzz/anime/a1d0c6e83f027327d8461063f4ac58a6/8b92f1aa1467d68404a9cca6a4895a32/master.m3u8"
-        referer="https://megaplay.buzz/stream/s-2/steinsgate-3?ep=230/dub"
+        referer="https://megaplay.buzz/stream/s-2/"
         subtitles={[
           {
             url: "https://cdn.dotstream.buzz/anime/a1d0c6e83f027327d8461063f4ac58a6/8b92f1aa1467d68404a9cca6a4895a32/subtitles/eng-0.vtt",
